@@ -6,7 +6,8 @@ services:
     container_name: asset-management-mssql
     environment:
       - ACCEPT_EULA=Y
-      - MSSQL_SA_PASSWORD=KoodariPreppaus2026!
+      # Fiksuus/Turvallisuus: Luetaan salasana tietokoneen omasta ympäristömuuttujasta
+      - MSSQL_SA_PASSWORD=${MSSQL_PASSWORD}
     ports:
       - "1433:1433"
     volumes:

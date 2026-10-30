@@ -4,11 +4,11 @@ using AssetManagement.WebApi.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// 1. Rekisterˆid‰‰n Microsoft SQL Server -tietokantayhteys (Docker)
+// 1. Rekister√∂id√§√§n Microsoft SQL Server -tietokantayhteys (Docker)
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// 2. Rekisterˆid‰‰n Repository Dependency Injectionia varten
+// 2. Rekister√∂id√§√§n Repository Dependency Injectionia varten
 builder.Services.AddScoped<IAssetRepository, AssetRepository>();
 
 builder.Services.AddControllers();
@@ -26,7 +26,7 @@ if (app.Environment.IsDevelopment())
 app.UseAuthorization();
 app.MapControllers();
 
-// AUTOMAATIO: P‰ivitt‰‰ Docker-kontin SQL-kannan automaattisesti k‰ynnistyksess‰
+// AUTOMAATIO: P√§ivitt√§√§ Docker-kontin SQL-kannan automaattisesti k√§ynnistyksess√§
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;

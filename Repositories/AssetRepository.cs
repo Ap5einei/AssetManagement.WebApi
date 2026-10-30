@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace AssetManagement.WebApi.Repositories
 {
+    // Tämä luokka toteuttaa IAssetRepository-rajapinnan (Repository Pattern)
     public class AssetRepository : IAssetRepository
     {
         private readonly AppDbContext _context;
 
+        // Tuodaan tietokantayhteys sisään konstruktorissa (Dependency Injection)
         public AssetRepository(AppDbContext context)
         {
             _context = context;
@@ -27,8 +29,8 @@ namespace AssetManagement.WebApi.Repositories
 
         public async Task<bool> UpdateAsync(Asset asset)
         {
-            _context.Entry(asset).State = EntityState.Modified;
-            return await _context.SaveChangesAsync() > 0;
+            _context.Entry(asset).State = EntityState.Modified; // Kerrotaan EF:lle, että data on muuttunut
+            return await _context.SaveChangesAsync() > 0; // Tallentaa SQL Serveriin
         }
     }
 }
