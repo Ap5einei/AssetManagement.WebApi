@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using AssetManagement.WebApi.Models;
+using System;
 
 namespace AssetManagement.WebApi.Data
 {
@@ -18,6 +19,7 @@ namespace AssetManagement.WebApi.Data
         {
             base.OnModelCreating(modelBuilder);
 
+            var defaultDate = new DateTime(2026, 10, 31, 0, 0, 0, DateTimeKind.Utc);
             // Kun tietokanta luodaan ensimmäistä kertaa, sinne lisätään nämä kolme riviä automaattisesti
             modelBuilder.Entity<Asset>().HasData(
                 new Asset { Id = "AVAIN-01", Name = "Pääoven kulkulätkä", DeviceType = "Avain", Status = "Vapaa" },

@@ -24,6 +24,6 @@ namespace AssetManagement.WebApi.Models
         
         public DateTime? ReturnDeadline { get; set; } // Milloin laite pitää palauttaa
 
-        public DateTime LastChecked { get; set; } = DateTime.UtcNow; // Viimeisin tarkistusaika
+        public DateTime LastChecked { get; set; }  // Viimeisin tarkistusaika
     }
 }
